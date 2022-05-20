@@ -5,7 +5,7 @@ public class Board {
 	
 	private int Lenght;
 	private int Obstacle;
-	private int Food; 
+	private int Food;
 	
 	public Board(int Lenght, int Food, int Obstacle) { 
 		this.Lenght = Lenght;

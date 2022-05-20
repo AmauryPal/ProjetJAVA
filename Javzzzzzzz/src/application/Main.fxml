@@ -5,15 +5,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="965.0" prefWidth="1249.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerMain">
    <children>
-      <Button layoutX="578.0" layoutY="836.0" mnemonicParsing="false" onAction="#up" prefHeight="25.0" prefWidth="60.0" text="UP" />
-      <Button layoutX="658.0" layoutY="875.0" mnemonicParsing="false" onAction="#right" prefHeight="25.0" prefWidth="68.0" text="RIGHT" />
-      <Button layoutX="508.0" layoutY="874.0" mnemonicParsing="false" onAction="#left" prefHeight="25.0" prefWidth="60.0" text="LEFT" />
-      <Button layoutX="584.0" layoutY="910.0" mnemonicParsing="false" onAction="#down" text="DOWN" />
-      <GridPane fx:id="grid" hgap="10.0" layoutX="287.0" layoutY="138.0" prefHeight="690.0" prefWidth="690.0" vgap="10.0">
+      <GridPane fx:id="grid" hgap="10.0" layoutX="295.0" layoutY="114.0" prefHeight="690.0" prefWidth="690.0" vgap="10.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,8 +36,59 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Text fx:id="energie" layoutX="874.0" layoutY="891.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="119.13671875" />
-      <Button layoutX="21.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="48.0" prefWidth="152.0" text="Retour Au Menu" />
-      <Text fx:id="textfin" fill="RED" layoutX="543.0" layoutY="43.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.41014099121094" />
+      <Text fx:id="energie" layoutX="911.0" layoutY="904.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Energie" textAlignment="CENTER" wrappingWidth="130.47005462646484">
+         <font>
+            <Font size="10.0" />
+         </font></Text>
+      <Button layoutX="21.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="60.0" prefWidth="170.0" text="Retour Au Menu">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Text fx:id="textfin" fill="RED" layoutX="189.0" layoutY="906.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="161.33334350585932" />
+      <Button layoutX="540.0" layoutY="883.0" mnemonicParsing="false" onAction="#left" prefHeight="45.0" prefWidth="70.0" text="Left" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="680.0" layoutY="883.0" mnemonicParsing="false" onAction="#right" prefHeight="45.0" prefWidth="70.0" text="Rigth" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="610.0" layoutY="928.0" mnemonicParsing="false" onAction="#down" prefHeight="45.0" prefWidth="70.0" text="Down" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="610.0" layoutY="838.0" mnemonicParsing="false" onAction="#up" prefHeight="45.0" prefWidth="70.0" text="Up" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="21.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="60.0" prefWidth="170.0" text="Sauvegarder">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text fx:id="distance" layoutX="975.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="250.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="energyLoss" layoutX="975.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="250.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="energyWin" layoutX="975.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="250.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button layoutX="24.0" layoutY="159.0" mnemonicParsing="false" onAction="#back" prefHeight="60.0" prefWidth="170.0" text="Retour en arrière">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
