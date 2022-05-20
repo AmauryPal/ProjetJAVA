@@ -56,32 +56,30 @@ public class Controller {
 	
 	int[][] board = new int[10][10]; //LE TABLEAU 
 	
-	Player joueur = new Player(400);	// JOUEUR 
+	Player joueur = new Player(400); // JOUEUR 
 	
 	public void afficher(int[][] tabl, Player joueur) {
 		int i;
 		int j;
 		
-		for (i=0; i<10; i++ ) { for(j=0; j<10; j++) {
+		for (i=0; i<10; i++ ) { 
+			for(j=0; j<10; j++) {
 		
-		if(tabl[i][j]== 1) { images[i][j].setImage(food);
+				if(tabl[i][j]== 1)
+					images[i][j].setImage(food);
+				else if(tabl[i][j] == 2) 
+					images[i][j].setImage(obstacle);
+				else if(tabl[i][j]== 3)
+					images[i][j].setImage(personnage);
+				else
+					images[i][j].setImage(casevide);
+
 		
-		
+			energie.setText("Energie en stock: "+joueur.getFood());
+			Fin(joueur);
+			}
 		}
-		else if(tabl[i][j] == 2) {images[i][j].setImage(obstacle);
-		
-			
-			
-		}
-		
-		else if(tabl[i][j]== 3) {images[i][j].setImage(personnage);}
-		
-		
-		else {images[i][j].setImage(casevide);}
-		
-		energie.setText("Energie en stock: "+joueur.getFood());
-		Fin(joueur);
-	}}}
+	}
 	
 	private Stage stage;
 	private Scene scene;
@@ -101,49 +99,48 @@ public class Controller {
 			for ( j=0; j<10;j++) {
 				images[i][j].setFitHeight(60);
 				images[i][j].setFitWidth(60);
-				grid.add(images[i][j], j, i,1,1);
-
+				grid.add(images[i][j], j, i, 1, 1);
 			}
 		}
 		board[0][0]=3;
 		afficher(board, joueur);
 		
 		
-		 }
+	}
 	
-public void up(ActionEvent e) {
-Play.avancer(board, joueur, 8);
-afficher(board, joueur);
-}
-public void down(ActionEvent e) {
-	Play.avancer(board, joueur, 5);
-	afficher(board, joueur);
-}
-public void left(ActionEvent e) {
-	Play.avancer(board, joueur, 4);
-	afficher(board, joueur);
+	public void up(ActionEvent e) {
+		Play.avancer(board, joueur, 8);
+		afficher(board, joueur);
+	}
+	public void down(ActionEvent e) {
+		Play.avancer(board, joueur, 5);
+		afficher(board, joueur);
+	}
+	public void left(ActionEvent e) {
+		Play.avancer(board, joueur, 4);
+		afficher(board, joueur);
+	}
+	public void right(ActionEvent e) {
+		Play.avancer(board, joueur, 6);
+		afficher(board, joueur);
+	}
 	
-}
-public void right(ActionEvent e) {
-	Play.avancer(board, joueur, 6);
-	afficher(board, joueur);
+	public void switchToMenu(ActionEvent event) throws IOException {
+		  root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  scene = new Scene(root);
+		  stage.setScene(scene);
+		  stage.show();
+	}
 	
-}
-
-public void switchToMenu(ActionEvent event) throws IOException {
-	  root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-	  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	  scene = new Scene(root);
-	  stage.setScene(scene);
-	  stage.show();
-	 }
-public Text textfin = new Text();
-
-public void Fin(Player j) {
-	
-	if(j.getX()== 9 && j.getY()== 9)  {textfin.setText("Tu as gagné la partie ! Bravo !");}
-	
-	else if (j.getFood() <= 0) {textfin.setText("Tu as perdu la partie, ton énergie est à 0 :(");}
-}
+	public Text textfin = new Text();
+	public void Fin(Player j) {
+		
+		if(j.getX()== 9 && j.getY()== 9)
+			textfin.setText("Tu as gagné la partie ! Bravo !");
+		
+		else if (j.getFood() <= 0) 
+			textfin.setText("Tu as perdu la partie, ton énergie est à 0 :(");
+	}
 
 }

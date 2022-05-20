@@ -41,24 +41,21 @@ public class Board {
 
 	
 	public static void Creer(int[][] plateau, Board Tab){
-	Random random = new Random();	
-	int a = Tab.getFood();
-	int b = a + Tab.getObstacle();
-	
-	for ( int i=0; i < Tab.getLenght(); i++)
-	{
-		for ( int j=0; j < Tab.getLenght(); j++) {
-			int x = random.nextInt(100);
-			if (x <= a) { plateau[i][j] = 1;
-			
-		}
-			if (a<x && x<= b) { plateau[i][j] = 2;}
+		Random random = new Random();	
+		int a = Tab.getFood();
+		int b = a + Tab.getObstacle();
 		
+		for ( int i=0; i < Tab.getLenght(); i++) {
+			for ( int j=0; j < Tab.getLenght(); j++) {
+				int x = random.nextInt(100);
+				if (x <= a) { 
+					plateau[i][j] = 1;
+				}
+				if (a<x && x<= b) { 
+					plateau[i][j] = 2;
+				}
+			}
+		}
+		plateau[9][9] = 0;
 	}
-	
-
-	
-	}
-plateau[9][9] = 0;
 }
-	}
