@@ -1,23 +1,47 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.io.Serializable;
 
-public class Player {
+public class Player implements Serializable{
 	
+	private String gameName = "Game4J";
 	private int food = 400;
+	private int startFood;
 	private int x = 0;
 	private int y = 0;
 	private int distance = 0;
 	private int energyWin = 0;
 	private int energyLoss = 0;
-	int nbDeRetour = 0;
+	private int nbDeRetour = 0;
+	private String startDate;
+	private String startTime;
+	private String stopTime;
+	private Date fullDate = new Date();
+
+
+	ArrayList<Direction> directions = new ArrayList<Direction>();
 	ArrayList<ArrayList<Integer>> moves = new ArrayList<ArrayList<Integer>>();
 	
-	public Player(int f) { 
-		this.setFood(f);
-		addMove();
+	public Player(int food) { 
+		this.setFood(food);
+		addMove();//ajouter 1ere case
+		startFood = food;
+		
+		setStartDate("Date : " + LocalDate.now().toString());//set les dates/heures
+		DateTimeFormatter FormatObj  = DateTimeFormatter.ofPattern("HH:mm:ss");
+		LocalTime temp = LocalTime.now();
+		setStartTime(temp.format(FormatObj));
+		
 	}
 	
+	public void addDirection(Direction right) {
+		directions.add(right);
+	}
 	
 	public void removeLastMove() {
 		moves.remove(moves.size()-1);
@@ -42,7 +66,7 @@ public class Player {
 			for (int j = 0; j < moves.get(i).size(); j++) {
 				System.out.printf("%-15s", moves.get(i).get(j));
 			}
-			System.out.println();
+			System.out.println("\n-----------------------------------------------------------");
 		}
 	}
 	
@@ -245,5 +269,47 @@ public class Player {
 
 	public void setNbDeRetour(int nbDeRetour) {
 		this.nbDeRetour = nbDeRetour;
+	}
+
+	public String getGameName() {
+		return gameName;
+	}
+
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
+		System.out.println(gameName);
+	}
+	
+	public String getStopTime() {
+		return stopTime;
+	}
+
+	public void setStopTime(String stopTime) {
+		this.stopTime = stopTime;
+	}
+
+	public String getStartDate() {
+		
+		return startDate;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+	
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getFullDate() {
+		return fullDate;
+	}
+
+	public void setFullDate(Date fullDate) {
+		this.fullDate = fullDate;
 	}
 }

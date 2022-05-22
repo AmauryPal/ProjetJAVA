@@ -1,7 +1,8 @@
 package application;
+import java.io.Serializable;
 import java.util.Random;
 
-public class Board {
+public class Board implements Serializable {
 	
 	private int Lenght;
 	private int Obstacle;
@@ -50,12 +51,13 @@ public class Board {
 				int x = random.nextInt(100);
 				if (x <= a) { 
 					plateau[i][j] = 1;
-				}
-				if (a<x && x<= b) { 
+				}else if (a<x && x<= b) { 
 					plateau[i][j] = 2;
-				}
+				}else
+					plateau[i][j] = 0;
 			}
 		}
+		plateau[0][0] = 3;
 		plateau[9][9] = 0;
 	}
 }

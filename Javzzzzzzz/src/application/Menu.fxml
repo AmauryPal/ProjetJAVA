@@ -16,12 +16,17 @@
             <Font size="85.0" />
          </font>
       </Text>
-      <Button layoutX="498.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="126.0" prefWidth="260.0" text="Sauvegardes" textAlignment="CENTER">
+      <Button layoutX="498.0" layoutY="362.0" mnemonicParsing="false" onAction="#switchToSaves" prefHeight="126.0" prefWidth="260.0" text="Sauvegardes" textAlignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" layoutX="498.0" layoutY="549.0" mnemonicParsing="false" onAction="#logout" prefHeight="126.0" prefWidth="260.0" text="Quitter" textAlignment="CENTER">
+      <Button fx:id="logoutButton" layoutX="498.0" layoutY="736.0" mnemonicParsing="false" onAction="#logout" prefHeight="126.0" prefWidth="260.0" text="Quitter" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="498.0" layoutY="549.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="260.0" text="Historique" textAlignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
