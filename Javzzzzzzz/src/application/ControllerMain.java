@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
@@ -68,9 +69,8 @@ public class ControllerMain {
 	}
 	
 	private Stage stage;
-	private Scene scene;
 	private Parent root;
-	
+	private Scene scene;
 	
 	public void go(ActionEvent event) throws IOException{
 		
@@ -90,35 +90,38 @@ public class ControllerMain {
 		afficher(board, joueur);
 	}
 	
-	public void up(ActionEvent e) {
+	public void up() {
 		if(Player.avancer(board, joueur, Direction.UP)) {
 			afficher(board, joueur);
 			alerte();//détecter si le joueur repasse sur une case
 			joueur.addMove();//ajouter le prochain déplacement
 		}
 	}
-	public void down(ActionEvent e) {
+	
+	public void down() {
 		if(Player.avancer(board, joueur, Direction.DOWN)) {
 			afficher(board, joueur);
-			alerte();
-			joueur.addMove();
+			alerte();//détecter si le joueur repasse sur une case
+			joueur.addMove();//ajouter le prochain déplacement
 		}
-		
 	}
-	public void left(ActionEvent e) {
+	
+	public void left() {
 		if(Player.avancer(board, joueur, Direction.LEFT)) {
 			afficher(board, joueur);
-			alerte();
-			joueur.addMove();
+			alerte();//détecter si le joueur repasse sur une case
+			joueur.addMove();//ajouter le prochain déplacement
 		}
 	}
-	public void right(ActionEvent e) {
+	
+	public void right() {
 		if(Player.avancer(board, joueur, Direction.RIGHT)) {
 			afficher(board, joueur);
-			alerte();
-			joueur.addMove();
+			alerte();//détecter si le joueur repasse sur une case
+			joueur.addMove();//ajouter le prochain déplacement
 		}
 	}
+	
 	
 	public void switchToMenu(ActionEvent event) throws IOException {
 		  root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -136,7 +139,7 @@ public class ControllerMain {
 	public void fin(Player j) {
 		if(j.getX()== 9 && j.getY()== 9) {
 			textfin.setText("Tu as gagné la partie ! Bravo !");
-			distance.setText("Distance parcourue : " + j.getDistance() + "cases");
+			distance.setText("Distance parcourue : " + j.getDistance() + " cases");
 			energyLoss.setText("Energie perdue : " + j.getEnergyLoss());
 			energyWin.setText("Enegie gagnée : " + j.getEnergyWin());
 			partieEnCours = false;
