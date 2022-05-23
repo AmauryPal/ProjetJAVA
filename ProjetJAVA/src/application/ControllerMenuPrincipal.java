@@ -106,14 +106,13 @@ public class ControllerMenuPrincipal implements Initializable{
 	@FXML
 	private Button logoutButton;
 	@FXML
-	private AnchorPane scenePane;
+	private AnchorPane pane;
 	public void logout(ActionEvent event) {
-		stage = (Stage) scenePane.getScene().getWindow();
+		stage = (Stage) pane.getScene().getWindow();
 		System.out.println("Vous avez quitté l'application avec succès !");
 		stage.close();
 	}
-    @FXML
-    private AnchorPane pane;
+
 
     @FXML
     private Circle circle;
