@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 
+@SuppressWarnings("unused")
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
