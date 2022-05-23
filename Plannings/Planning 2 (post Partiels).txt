@@ -1,0 +1,18 @@
+Semaine du  16 Mai :
+
+Lundi 16 mai: 
+finaliser la mission 3 et implémenter graphiqument. 
+
+Mardi 17 mai : 
+Revoir les diagrammes UML en fonction de l'interface graphique 
+Finaliser la mission 6
+
+Mercredi 18 mai: Faire la mission 8
+
+Jeudi 19 Mai: Finaliser mission 5 et 6 et implémenter à l'interface graphique
+
+Vendredi 20 Mai: Organiser une réunion et finaliser la mission 5
+
+Samedi 21 Mai et Dimanche 22 Mai:
+Débugger entièrement le programme, rédiger le rapport, faire la vidéo, Ajouter des features bonus au jeu.
+
