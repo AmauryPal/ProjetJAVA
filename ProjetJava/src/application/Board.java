@@ -2,7 +2,6 @@ package application;
 import java.io.Serializable;
 import java.util.Random;
 
-@SuppressWarnings("serial")
 public class Board implements Serializable {
 	
 	private int Lenght;

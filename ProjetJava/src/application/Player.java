@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class Player implements Serializable{
 	
 	private String gameName = "Game4J";
@@ -78,7 +77,7 @@ public class Player implements Serializable{
 			return false;
 		
 		if(dir == Direction.UP) {
-			if (board[j.getX()-1][j.getY()] == 0 || board[j.getX()-1][j.getY()] == 5) {
+			if (board[j.getX()-1][j.getY()] == 0) {
 				board[j.getX()-1][j.getY()] = 3;
 				board[j.getX()][j.getY()] = 0;
 				j.setFood(j.getFood() -10);
@@ -104,7 +103,7 @@ public class Player implements Serializable{
 		
 		if (dir == Direction.DOWN) {
 			
-			if (board[j.getX()+1][j.getY()] == 0 || board[j.getX()+1][j.getY()] == 5) {
+			if (board[j.getX()+1][j.getY()] == 0) {
 				board[j.getX()+1][j.getY()] = 3;
 				board[j.getX()][j.getY()] = 0;
 				j.setFood(j.getFood() -10);
@@ -129,7 +128,7 @@ public class Player implements Serializable{
 		
 		if (dir == Direction.LEFT) {
 			
-			if (board[j.getX()][j.getY()-1] == 0 || board[j.getX()][j.getY()-1] == 5) {
+			if (board[j.getX()][j.getY()-1] == 0) {
 				board[j.getX()][j.getY()-1] = 3;
 				board[j.getX()][j.getY()] = 0;
 				j.setFood(j.getFood() - 10);
@@ -153,7 +152,7 @@ public class Player implements Serializable{
 		}
 		if (dir == Direction.RIGHT) {
 			
-			if (board[j.getX()][j.getY()+1] == 0 || board[j.getX()][j.getY()+1] == 5) {
+			if (board[j.getX()][j.getY()+1] == 0) {
 				board[j.getX()][j.getY()+1] = 3;
 				board[j.getX()][j.getY()] = 0;
 				j.setFood(j.getFood() -10);

@@ -56,6 +56,7 @@ public class ControllerMenuHistorique {
 		  root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 		  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		  scene = new Scene(root);
+		  scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		  stage.setScene(scene);
 		  stage.show();
 	}
@@ -69,6 +70,7 @@ public class ControllerMenuHistorique {
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 		

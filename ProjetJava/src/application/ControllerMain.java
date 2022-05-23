@@ -1,9 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,7 +24,6 @@ public class ControllerMain {
 	Image jakeFinn = new Image("finnJake.png");
 	Image jakeCry = new Image("jake.jpg");
 	Image jakeWait = new Image("jakeWait.jpg");
-	Image caseSoluce = new Image("caseSoluce.png");
 	
 	
 	
@@ -70,8 +66,6 @@ public class ControllerMain {
 					images[i][j].setImage(obstacle);
 				else if(tabl[i][j]== 3)
 					images[i][j].setImage(personnage);
-				else if(tabl[i][j] == 5)
-					images[i][j].setImage(caseSoluce);
 				else
 					images[i][j].setImage(caseVide);
 			}
@@ -87,12 +81,8 @@ public class ControllerMain {
 	
 	public void init() {//réinitialise tout à null, recréé une grille et une instance joueur
 
-		Board plateau = new Board(10, 5, 70);
-		List<Integer> path = new ArrayList<Integer>();
-		
-		do {
-			Board.Creer(board, plateau);
-		} while (!(Pathfinder.searchPath(getPathBoard(), 1, 1, path)));
+		Board plateau = new Board(10, 5, 5);
+		Board.Creer(board, plateau);
 
 		joueur = new Player(400);
 		
@@ -144,105 +134,38 @@ public class ControllerMain {
 		afficher(board, joueur);
 		images[0][0].setImage(finnStart);
 	}
-	
-	public void up() {
+	public void up(ActionEvent e) {
 		if(Player.avancer(board, joueur, Direction.UP)) {
+			joueur.addDirection(Direction.UP);//ajouter la direction prise à chaque
 			afficher(board, joueur);
 			alerte();//détecter si le joueur repasse sur une case
 			joueur.addMove();//ajouter le prochain déplacement
-			joueur.addDirection(Direction.UP);//ajouter la direction prise à chaque
 		}
 	}
-	public void down() {
+	public void down(ActionEvent e) {
 		if(Player.avancer(board, joueur, Direction.DOWN)) {
-			afficher(board, joueur);
-			alerte();
-			joueur.addMove();
 			joueur.addDirection(Direction.DOWN);
+			afficher(board, joueur);
+			alerte();
+			joueur.addMove();
 		}
 		
 	}
-	public void left() {
+	public void left(ActionEvent e) {
 		if(Player.avancer(board, joueur, Direction.LEFT)) {
-			afficher(board, joueur);
-			alerte();
-			joueur.addMove();
 			joueur.addDirection(Direction.LEFT);
-		}
-	}
-	public void right() {
-		if(Player.avancer(board, joueur, Direction.RIGHT)) {
 			afficher(board, joueur);
 			alerte();
 			joueur.addMove();
+		}
+	}
+	public void right(ActionEvent e) {
+		if(Player.avancer(board, joueur, Direction.RIGHT)) {
 			joueur.addDirection(Direction.RIGHT);
+			afficher(board, joueur);
+			alerte();
+			joueur.addMove();
 		}
-	}
-	
-	public int[][] getPathBoard() {
-		
-		int[][] initBoard = { {1,1,1,1,1,1,1,1,1,1,1,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,0,1},
-							  {1,0,0,0,0,0,0,0,0,0,9,1},
-							  {1,1,1,1,1,1,1,1,1,1,1,1} };
-		
-		int[][] board1 = new int[10][10];
-		
-		for (int i = 0; i < board1.length; i++) {
-			for (int j = 0; j < board1.length; j++) {
-				
-				if (board[i][j] == 1) {
-					board1[i][j] = 0;
-				}
-				if (board[i][j] == 2) {
-					board1[i][j] = 1;
-				}
-				if (board[i][j] == 3) {
-					board1[i][j] = 0;
-				}	
-				
-				
-				initBoard[i+1][j+1] = board1[i][j];
-			
-			}
-		}
-		
-		initBoard[1][1] = 0;
-		initBoard[10][10] = 9;
-
-		return initBoard;
-	
-	}
-
-	
-	public void soluce() {
-		
-		List<Integer> path = new ArrayList<Integer>();
-		
-        Pathfinder.searchPath(getPathBoard(), 1, 1, path);
-		
-	    for (int p = 0; p < path.size(); p += 2) {
-	    	
-	    	int pathX = path.get(p);
-	        int pathY = path.get(p + 1);
-	    
-	        board[pathY - 1][pathX - 1] = 5;
-	        
-	        afficher(board, joueur);
-	    
-	        }
-	    
-	    System.out.println("Le chemin le moins couteux en distance est : " + path);
-	    System.out.println("Le chemin le moins couteux en énergie est : " + path);
-	    
 	}
 	
 
@@ -250,6 +173,7 @@ public class ControllerMain {
 		root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -259,6 +183,7 @@ public class ControllerMain {
 			root = FXMLLoader.load(getClass().getResource("GameName.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.show();
 		}
@@ -329,5 +254,7 @@ public class ControllerMain {
 				images[joueur.getMoves().get(i).get(0)][joueur.getMoves().get(i).get(1)].setImage(finnEnd);
 			}
 		}
+		
+		
 		
 }
